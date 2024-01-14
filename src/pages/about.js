@@ -25,7 +25,7 @@ function About() {
         <Box py="20" bg="#FFFAF0" color="#333" textAlign="center">
           <Box maxW="4xl" mx="auto">
             <Heading as="h2" size="xl" mb="4" color="#333">
-              Welcome to Kiosk Prihatin 🌟
+             🌟 Welcome to Kiosk Prihatin 🌟
             </Heading>
             <Text fontSize="lg" mb="6" color="#555">
               Join us in spreading love and care through our community-driven initiative. Discover essential services and information tailored for everyone!
