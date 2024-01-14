@@ -41,6 +41,8 @@ import ContentManagement from "./admin/content";
 import VolunteerHistory from "./pages/Volunteer/volunteerHistory";
 import MakeReserve from "./pages/Reservation/MakeReservation";
 import ConfirmReserve from "./pages/Reservation/ConfirmReservation";
+import ReserveHistory from "./pages/Reservation/ReserveHistory";
+import User from "./pages/user";
 
 const token = getAccessToken();
 
@@ -91,8 +93,12 @@ function App() {
           <Route path="/stocks" element={<Stocks></Stocks>}></Route>
           <Route path="/makeReserve" element={<MakeReserve />}></Route>
           <Route
-            path="/confirmReserve/:data"
+            path="/confirmReserve/:session_id"
             element={<ConfirmReserve />}
+          ></Route>
+          <Route
+            path="/reserveHistory"
+            element={<ReserveHistory></ReserveHistory>}
           ></Route>
           <Route
             path="/volHistory"
@@ -110,6 +116,7 @@ function App() {
             path="/volReg/:session_id"
             element={<VolunteerRegistration />}
           ></Route>
+          <Route path="/user" element={<User></User>}></Route>
 
           {/** admin*/}
           <Route path="/homepage" element={<HomePage></HomePage>}></Route>
@@ -136,10 +143,6 @@ function App() {
           <Route
             path="/do"
             element={<DonationManagement></DonationManagement>}
-          ></Route>
-          <Route
-            path="/user"
-            element={<UserAuthentication></UserAuthentication>}
           ></Route>
           <Route path="/userrr" element={<UsersList></UsersList>}></Route>
           <Route

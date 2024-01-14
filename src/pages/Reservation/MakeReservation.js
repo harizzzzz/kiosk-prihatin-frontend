@@ -33,6 +33,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import theme from "../../theme";
+import { isEmpty } from "lodash";
 
 import NavBar from "../utility/Navbar";
 
@@ -94,10 +95,24 @@ export default function MakeReserve() {
   };
 
   const submitData = async () => {
+    if (
+      isEmpty(quantities) ||
+      Object.values(quantities).every((value) => value === 0)
+    ) {
+      // Show a toast or an alert to prompt the user
+      toast({
+        title: "Add Items",
+        description:
+          "Please add some items to your reservation before confirming.",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+      });
+      return;
+    }
+
     const currentTimestamp = Date.now(); // Get current timestamp in milliseconds
     const randomNumber = Math.floor(Math.random() * 1000); // Generate a random number (adjust the range as needed)
-
-    // Combine timestamp and random number to create the session ID
     const session_id = `${currentTimestamp}${randomNumber}`;
 
     for (const item of inventoryData) {
@@ -109,7 +124,48 @@ export default function MakeReserve() {
         // Handle errors if needed
       }
     }
-    window.location.reload();
+    const res = await axios.get(
+      `http://localhost:3000/reserve/sessionExist/${session_id}`
+    );
+    if (res) {
+      try {
+        toast({
+          title: "Reservation Successful",
+          description: `Your reservation has been made on id : ${session_id}`,
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          onClose: () => {
+            window.location.href = `/confirmReserve/${session_id}`;
+          },
+        });
+        setTimeout(() => {
+          // Redirect to another page after the delay
+          window.location.href = `/confirmReserve/${session_id}`;
+        }, 3000);
+      } catch (e) {
+        console.log(e);
+      }
+    } else if (!res) {
+      try {
+        toast({
+          title: "Reservation Unsuccessful",
+          description: `Your reservation failed ! Please check your item quantity`,
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          onClose: () => {
+            window.location.reload();
+          },
+        });
+        setTimeout(() => {
+          // Redirect to another page after the delay
+          window.location.reload();
+        }, 3000);
+      } catch (e) {
+        console.log(e);
+      }
+    }
   };
 
   const handleDecrease = (response) => {
@@ -143,7 +199,6 @@ export default function MakeReserve() {
         quantity: quantity,
         // Add other fields as needed
       });
-
       // Handle the API response as needed
       console.log(`Item ${item.inv_id} updated successfully:`, response.data);
     } catch (error) {
@@ -276,7 +331,14 @@ export default function MakeReserve() {
                   <Button ref={cancelRef} onClick={onClose}>
                     Cancel
                   </Button>
-                  <Button colorScheme="green" onClick={onClose} ml={3}>
+                  <Button
+                    colorScheme="green"
+                    onClick={() => {
+                      submitData();
+                      onClose();
+                    }}
+                    ml={3}
+                  >
                     Confirm
                   </Button>
                 </AlertDialogFooter>

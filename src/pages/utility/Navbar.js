@@ -91,7 +91,7 @@ export default function NavBar() {
                   <MenuItem as={ReactRouterLink} to={"/makeReserve"}>
                     Make Reservation
                   </MenuItem>
-                  <MenuItem as={ReactRouterLink} to={""}>
+                  <MenuItem as={ReactRouterLink} to={"/reserveHistory"}>
                     History
                   </MenuItem>
                 </MenuList>
