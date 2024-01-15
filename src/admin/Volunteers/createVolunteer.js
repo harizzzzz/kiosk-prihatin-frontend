@@ -44,6 +44,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { CiFilter } from "react-icons/ci";
 import theme from "../../theme";
+import NavBarAdmin from "../../pages/utility/NavbarAdmin";
 
 export default function CreateVolunteer() {
   const [isLoading, setIsLoading] = useState(false);
@@ -113,6 +114,7 @@ export default function CreateVolunteer() {
 
   return (
     <ChakraProvider theme={theme}>
+      <NavBarAdmin />
       <CSSReset />
       <Flex align="center" justify="center" height="100vh" bgColor="wheat">
         <form onSubmit={handleSubmit}>

@@ -47,6 +47,10 @@ import ManageUsers from "./admin/Users/manageUsers";
 import ManageVolunteers from "./admin/Volunteers/manageVolunteers";
 import CreateVolunteer from "./admin/Volunteers/createVolunteer";
 import EditVolunteer from "./admin/Volunteers/editVolunteer";
+import CreateItems from "./admin/Items/createItems";
+import ViewItems from "./admin/Items/viewItems";
+import UpdateItem from "./admin/Items/updateItem";
+import ViewInventory from "./admin/Items/viewInventory";
 const token = getAccessToken();
 
 function App() {
@@ -138,6 +142,22 @@ function App() {
           <Route
             path="/admin/editVolunteer/:session_id"
             element={<EditVolunteer></EditVolunteer>}
+          ></Route>
+          <Route
+            path="/admin/createItem"
+            element={<CreateItems></CreateItems>}
+          ></Route>
+          <Route
+            path="/admin/viewItems"
+            element={<ViewItems></ViewItems>}
+          ></Route>
+          <Route
+            path="/admin/editItem/:id"
+            element={<UpdateItem></UpdateItem>}
+          ></Route>
+          <Route
+            path="/admin/viewInventory/:id"
+            element={<ViewInventory></ViewInventory>}
           ></Route>
           <Route
             path="/manage"

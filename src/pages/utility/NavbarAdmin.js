@@ -33,6 +33,7 @@ export default function NavBarAdmin() {
         pl={5}
         pr={5}
         align={"center"}
+        zIndex={999}
       >
         <Box height={"14"}>
           <ReactRouterLink to={"/"}>
@@ -49,7 +50,7 @@ export default function NavBarAdmin() {
         <Spacer />
         <Box>
           <Stack direction={"row"} spacing={21}>
-            <Box as={ReactRouterLink} to={"/"}>
+            <Box as={ReactRouterLink} to={"/homepage"}>
               Home
             </Box>
             <Box>
@@ -62,14 +63,11 @@ export default function NavBarAdmin() {
                   Volunteer {isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}{" "}
                 </MenuButton>
                 <MenuList onMouseEnter={onOpen} onMouseLeave={onClose}>
-                  <MenuItem as={ReactRouterLink} to={"/testVol"}>
-                    Volunteer Sessions
+                  <MenuItem as={ReactRouterLink} to={"/admin/createVolunteer"}>
+                    Create Volunteer Session
                   </MenuItem>
-                  <MenuItem as={ReactRouterLink} to={"/editVol"}>
-                    Upcoming Sessions
-                  </MenuItem>
-                  <MenuItem as={ReactRouterLink} to={"/volHistory"}>
-                    History
+                  <MenuItem as={ReactRouterLink} to={"/admin/manageVolunteer"}>
+                    Manage Volunteer
                   </MenuItem>
                 </MenuList>
               </Menu>
@@ -81,22 +79,21 @@ export default function NavBarAdmin() {
                   onMouseEnter={onOpen}
                   onMouseLeave={onClose}
                 >
-                  Food Reserve{" "}
+                  Items
                   {isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}{" "}
                 </MenuButton>
                 <MenuList onMouseEnter={onOpen} onMouseLeave={onClose}>
-                  <MenuItem>Volunteer Sessions</MenuItem>
-                  <MenuItem>Registered Sessions</MenuItem>
-                  <MenuItem>Menu Item 3</MenuItem>
+                  <MenuItem as={ReactRouterLink} to={"/admin/createItem"}>
+                    Create Item
+                  </MenuItem>
+                  <MenuItem as={ReactRouterLink} to={"/admin/viewItems"}>
+                    Manage Items
+                  </MenuItem>
                 </MenuList>
               </Menu>
             </Box>
-            <Box as={ReactRouterLink} to={"/donate"}>
-              Donate
-            </Box>
-
-            <Box as={ReactRouterLink} to={"/about"}>
-              About
+            <Box as={ReactRouterLink} to={"/do"}>
+              Donation
             </Box>
           </Stack>
         </Box>
@@ -120,11 +117,7 @@ export default function NavBarAdmin() {
                   Signup
                 </MenuItem>
               )}
-              {isAuthenticated() ? (
-                <MenuItem type="button" as={ReactRouterLink} to={"/user"}>
-                  Profile
-                </MenuItem>
-              ) : null}
+
               {isAuthenticated() ? (
                 <MenuItem
                   onClick={() => {

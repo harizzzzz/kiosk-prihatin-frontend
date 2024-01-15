@@ -38,6 +38,7 @@ import {
 import axios from "axios";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { CiFilter } from "react-icons/ci";
+import NavBarAdmin from "../../pages/utility/NavbarAdmin";
 
 export default function ManageVolunteers() {
   const [pastVolunteer, setPastVolunteer] = useState([]);
@@ -135,6 +136,9 @@ export default function ManageVolunteers() {
 
   return (
     <ChakraProvider>
+      <Box pb={10}>
+        <NavBarAdmin />
+      </Box>
       <Flex direction="column" align="center" bgColor="wheat">
         <Heading m={3}>Manage Volunteers</Heading>
         <Box mb={4}>
