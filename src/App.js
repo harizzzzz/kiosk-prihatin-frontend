@@ -43,7 +43,10 @@ import MakeReserve from "./pages/Reservation/MakeReservation";
 import ConfirmReserve from "./pages/Reservation/ConfirmReservation";
 import ReserveHistory from "./pages/Reservation/ReserveHistory";
 import User from "./pages/user";
-
+import ManageUsers from "./admin/Users/manageUsers";
+import ManageVolunteers from "./admin/Volunteers/manageVolunteers";
+import CreateVolunteer from "./admin/Volunteers/createVolunteer";
+import EditVolunteer from "./admin/Volunteers/editVolunteer";
 const token = getAccessToken();
 
 function App() {
@@ -120,6 +123,22 @@ function App() {
 
           {/** admin*/}
           <Route path="/homepage" element={<HomePage></HomePage>}></Route>
+          <Route
+            path="/admin/manageUser"
+            element={<ManageUsers></ManageUsers>}
+          ></Route>
+          <Route
+            path="/admin/manageVolunteer"
+            element={<ManageVolunteers></ManageVolunteers>}
+          ></Route>
+          <Route
+            path="/admin/createVolunteer"
+            element={<CreateVolunteer></CreateVolunteer>}
+          ></Route>
+          <Route
+            path="/admin/editVolunteer/:session_id"
+            element={<EditVolunteer></EditVolunteer>}
+          ></Route>
           <Route
             path="/manage"
             element={<UserManagement></UserManagement>}

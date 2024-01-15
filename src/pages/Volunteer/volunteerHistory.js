@@ -91,7 +91,6 @@ export default function VolunteerHistory() {
                     {response.vSession.VSession_date}
                   </Td>
                   <Td>
-                    {/* Integrate the namesArray and namesList here */}
                     {response.participants.names && (
                       <ul>
                         {response.participants.names

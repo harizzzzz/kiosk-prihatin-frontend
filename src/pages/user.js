@@ -25,11 +25,13 @@ import {
   Stack,
   Input,
   Center,
+  useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
 import theme from "../theme";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import NavBar from "./utility/Navbar";
+import { getAccessToken } from "../auth/token";
 
 function User() {
   const student_id = window.localStorage.getItem("username");
@@ -38,8 +40,10 @@ function User() {
     password_hash: "",
     student_id: "",
     email: "",
+    password_old: "",
   });
   const [editMode, setEditMode] = useState(false);
+  const toast = useToast();
 
   useEffect(() => {
     axios
@@ -58,8 +62,84 @@ function User() {
   }, []);
 
   const handleEdit = () => {
-    setEditMode(!editMode);
+    setEditMode(true);
   };
+  const handleSave = () => {
+    let newPassword = "";
+    const token = getAccessToken();
+
+    // Keep prompting until a non-empty value is provided
+    while (newPassword.trim() === "") {
+      newPassword = prompt("Enter your password to save changes:");
+
+      // If the user cancels the prompt, exit the function
+      if (newPassword === null) {
+        return;
+      }
+    }
+
+    const modifiedUser = {
+      ...user,
+      password_old: newPassword,
+      password_hash:
+        user.password_hash.trim() === "" ? newPassword : user.password_hash,
+    };
+
+    axios
+      .post(`http://localhost:3000/users/modify`, modifiedUser, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json", // Add this line to set content type
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.statusCode === 200) {
+          try {
+            toast({
+              title: "Update Successful",
+              description: `Your account is successfully updated !`,
+              status: "success",
+              duration: 5000,
+              isClosable: true,
+              onClose: () => {
+                window.location.reload();
+              },
+            });
+            setTimeout(() => {
+              // Redirect to another page after the delay
+              window.location.reload();
+            }, 3000);
+          } catch (e) {
+            console.log(e);
+          }
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        try {
+          toast({
+            title: "Error 401 : Unauthorized!",
+            description: "Please check your password !",
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+            onClose: () => {
+              window.location.reload();
+            },
+          });
+          setTimeout(() => {
+            // Redirect to another page after the delay
+            window.location.reload();
+          }, 3000);
+        } catch (e) {
+          console.log(e);
+        }
+      });
+
+    setEditMode(false);
+  };
+
   return (
     <ChakraProvider theme={theme}>
       <Box height="25px" mb={9} position="sticky" top={0} zIndex={10}>
@@ -127,12 +207,35 @@ function User() {
                   ></Input>
                 </Td>
               </Tr>
+              <Tr>
+                <Td>Password</Td>
+                <Td>
+                  <Input
+                    type="text"
+                    placeholder="Password"
+                    required
+                    readOnly={!editMode}
+                    value={user.password_hash}
+                    onChange={(e) =>
+                      setUser({
+                        ...user,
+                        password_hash: e.target.value,
+                      })
+                    }
+                  ></Input>
+                </Td>
+              </Tr>
             </Tbody>
           </Table>
         </TableContainer>
-        <Button mt={2} onClick={handleEdit}>
-          {editMode ? "Save" : "Edit"}
-        </Button>
+        <Stack direction="row">
+          <Button mt={2} onClick={handleEdit} mr={2}>
+            Edit
+          </Button>
+          <Button mt={2} onClick={handleSave}>
+            Save
+          </Button>
+        </Stack>
       </Flex>
     </ChakraProvider>
   );
