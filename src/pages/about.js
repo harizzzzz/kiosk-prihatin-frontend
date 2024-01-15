@@ -9,15 +9,9 @@ import {
 } from "@chakra-ui/react";
 import NavBar from "./utility/Navbar";
 
-function About() {
- const logos = [
-    "https://cdn.uitm.edu.my/gambar_warga/801ed7868419ff1c56d36b7bbd41be8c.png",
-    "https://cdn.uitm.edu.my/gambar_warga/ee178a64c71f6b1814f68efc28deb62e.png", // Replace this line with your specific image URL
-    "https://cdn.uitm.edu.my/gambar_warga/efb65c9cfd12b2883857ff759872e2bd.png",
-    // Add more logo URLs as needed
-  ];
 
- 
+function About() {
+
 
   return (
     <Box>
@@ -31,7 +25,7 @@ function About() {
         <Box py="20" bg="#FFFAF0" color="#333" textAlign="center">
           <Box maxW="4xl" mx="auto">
             <Heading as="h2" size="xl" mb="4" color="#333">
-              Welcome to Kiosk Prihatin 🌟
+             🌟 Welcome to Kiosk Prihatin 🌟
             </Heading>
             <Text fontSize="lg" mb="6" color="#555">
               Join us in spreading love and care through our community-driven initiative. Discover essential services and information tailored for everyone!
@@ -56,7 +50,18 @@ function About() {
                 borderRadius="lg"
                 overflow="hidden"
               >
-                <Image src={`${logos}`} alt="Team Member 1" />
+                <Image src={`https://cdn.uitm.edu.my/gambar_warga/801ed7868419ff1c56d36b7bbd41be8c.png`} alt="Director" />
+              </Box>
+              {/* Team Member 2 */}
+              <Box
+                maxW="300px"
+                borderWidth="1px"
+                borderRadius="lg"
+                overflow="hidden"
+              
+              >
+                 
+               <Image src={`https://cdn.uitm.edu.my/gambar_warga/ee178a64c71f6b1814f68efc28deb62e.png`} alt="Team Member 1" />
               </Box>
               {/* Team Member 2 */}
               <Box
@@ -65,7 +70,6 @@ function About() {
                 borderRadius="lg"
                 overflow="hidden"
               >
-                <Image src="assets/images/3.png" alt="Team Member 2" />
               </Box>
               {/* Team Member 3 */}
               <Box
@@ -74,7 +78,7 @@ function About() {
                 borderRadius="lg"
                 overflow="hidden"
               >
-                <Image src="/path/to/your/image3.jpg" alt="Team Member 3" />
+                <Image src='https://cdn.uitm.edu.my/gambar_warga/efb65c9cfd12b2883857ff759872e2bd.png'alt="Team Member 3" />
               </Box>
             </Flex>
           </Box>
@@ -124,7 +128,7 @@ function About() {
             <Flex justifyContent="center" flexWrap="wrap" mb="8">
               {/* Partner Logo 1 */}
               <Image
-                src="/partner_logo1.png"
+                src='https://1000logos.net/wp-content/uploads/2020/09/Petronas-Logo.png'
                 alt="Partner Logo 1"
                 w="150px"
                 h="auto"
@@ -132,7 +136,7 @@ function About() {
               />
               {/* Partner Logo 2 */}
               <Image
-                src="/partner_logo2.png"
+                src='https://seeklogo.com/images/S/sime-darby-logo-DA85D99D2A-seeklogo.com.png'
                 alt="Partner Logo 2"
                 w="150px"
                 h="auto"
@@ -150,7 +154,7 @@ function About() {
         <Box bg="#FFFAF0" color="#333" py="4" textAlign="center">
           <Text>&copy; 2024 Kiosk Prihatin. All rights reserved. Spread Love! ❤️</Text>
           <Text mt="2" fontSize="sm">
-            Crafted with ❤️ by HarizStyle 😊
+            Design with ❤️ by HarizComel 😊
           </Text>
         </Box>
       </Box>
