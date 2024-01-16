@@ -125,21 +125,31 @@ export default function Volunteers() {
         <NavBar />
       </Box>
 
-      <Flex direction="column" align="center" justify="start" minHeight="100vh">
+      <Flex
+        direction="column"
+        align="center"
+        justify="start"
+        minHeight="100vh"
+        bgGradient="linear(to-r, orange.400, yellow.300)"
+        color="white"
+        textAlign="center"
+        borderRadius="xl"
+        boxShadow="lg"
+      >
         <Heading pb={2}>Manage Upcoming Sessions</Heading>
         {volunteers.message == "No data" ? (
           <Text fontFamily="monospace" fontSize="4xl" pt={20}>
             There are no registered sessions !
           </Text>
         ) : (
-          <TableContainer bgColor={"#2e3440"} rounded="2xl">
+          <TableContainer bgColor="gray.500" rounded="xl">
             <Table
               variant="simple"
               borderWidth="1px"
               borderColor="gray.200"
               color="white"
             >
-              <Thead>
+              <Thead bgColor="gray">
                 <Tr>
                   <Th borderWidth="1px" borderColor="gray.200" color="white">
                     Description

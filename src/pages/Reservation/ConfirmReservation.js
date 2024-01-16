@@ -64,61 +64,70 @@ export default function ConfirmReserve() {
 
   return (
     <ChakraProvider theme={theme}>
-      <Stack direction="row" p={2}>
-        <Button ml={5} mt={1} onClick={handleGoBack}>
-          <ArrowBackIcon mr={3} />
-          Back
-        </Button>
-        <Heading mt={1} pl="30%">
-          Reservation Details
-        </Heading>
-      </Stack>
-      <Stack direction="row" pt={10} justifyContent="center">
-        <Box
-          width="40%"
-          borderWidth="5px"
-          height="80vh"
-          rounded="3xl"
-          style={{
-            backdropFilter: "blur(5px)",
-            backgroundColor: "rgba(200, 255, 255, 0.3)",
-          }}
-        >
+      <Box
+        bgGradient="linear(to-r, orange.400, yellow.300)"
+        color="white"
+        textAlign="center"
+        borderRadius="xl"
+        boxShadow="lg"
+        minH="100vh"
+      >
+        <Stack direction="row" p={2}>
+          <Button ml={5} mt={1} onClick={handleGoBack}>
+            <ArrowBackIcon mr={3} />
+            Back
+          </Button>
+          <Heading mt={1} pl="30%">
+            Reservation Details
+          </Heading>
+        </Stack>
+        <Stack direction="row" pt={10} justifyContent="center">
           <Box
-            width="80%"
-            margin="auto"
-            alignItems="center"
-            height="inherit"
-            pt={50}
+            width="40%"
+            borderWidth="5px"
+            height="80vh"
+            rounded="3xl"
+            style={{
+              backdropFilter: "blur(5px)",
+              backgroundColor: "rgba(128, 128, 128, 0.3)",
+            }}
           >
-            <Box ml={5}>
-              {" "}
-              <Text> Reservation ID : {session_id}</Text>
-              <Text>Student ID : {localStorage.getItem("username")}</Text>
-              <Text>Reserved On : {formattedCreatedAt}</Text>
-            </Box>
+            <Box
+              width="80%"
+              margin="auto"
+              alignItems="center"
+              height="inherit"
+              pt={50}
+            >
+              <Box ml={5}>
+                {" "}
+                <Text> Reservation ID : {session_id}</Text>
+                <Text>Student ID : {localStorage.getItem("username")}</Text>
+                <Text>Reserved On : {formattedCreatedAt}</Text>
+              </Box>
 
-            <TableContainer pt={5}>
-              <Table>
-                <Thead>
-                  <Tr>
-                    <Th>Item Name</Th>
-                    <Th isNumeric>Quantity</Th>
-                  </Tr>
-                </Thead>
-                <Tbody>
-                  {reserve.map((reservation) => (
-                    <Tr key={reservation.reserve_id}>
-                      <Td>{reservation.item_name}</Td>
-                      <Td isNumeric>{reservation.item_quantity}</Td>
+              <TableContainer pt={5}>
+                <Table>
+                  <Thead>
+                    <Tr>
+                      <Th>Item Name</Th>
+                      <Th isNumeric>Quantity</Th>
                     </Tr>
-                  ))}
-                </Tbody>
-              </Table>
-            </TableContainer>
+                  </Thead>
+                  <Tbody>
+                    {reserve.map((reservation) => (
+                      <Tr key={reservation.reserve_id}>
+                        <Td>{reservation.item_name}</Td>
+                        <Td isNumeric>{reservation.item_quantity}</Td>
+                      </Tr>
+                    ))}
+                  </Tbody>
+                </Table>
+              </TableContainer>
+            </Box>
           </Box>
-        </Box>
-      </Stack>{" "}
+        </Stack>{" "}
+      </Box>
     </ChakraProvider>
   );
 }

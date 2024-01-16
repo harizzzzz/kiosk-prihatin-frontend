@@ -38,6 +38,7 @@ import {
 import axios from "axios";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { CiFilter } from "react-icons/ci";
+import NavBarAdmin from "../../pages/utility/NavbarAdmin";
 
 export default function ManageUsers() {
   const [student, setStudent] = useState([]);
@@ -119,10 +120,21 @@ export default function ManageUsers() {
   };
   return (
     <ChakraProvider>
-      <Center m={5}>
-        <Heading fontFamily="monospace">Manage Users</Heading>
-      </Center>
-      <Flex direction="column" align="center">
+      <Box pb={10}>
+        <NavBarAdmin />
+      </Box>
+
+      <Flex
+        direction="column"
+        align="center"
+        bgGradient="linear(to-r, orange.400, yellow.300)"
+        textAlign="center"
+        borderRadius="xl"
+        boxShadow="lg"
+      >
+        <Center m={5}>
+          <Heading fontFamily="monospace">Manage Users</Heading>
+        </Center>
         <Box mb={4}>
           <Stack direction="row">
             <Input

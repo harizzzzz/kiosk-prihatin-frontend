@@ -214,14 +214,25 @@ export default function MakeReserve() {
         <NavBar />
       </Box>
 
-      <Flex direction="column" align="center" justify="start" minHeight="100vh">
+      <Flex
+        direction="column"
+        align="center"
+        justify="start"
+        minHeight="100vh"
+        bgGradient="linear(to-r, orange.400, yellow.300)"
+        color="white"
+        textAlign="center"
+        borderRadius="xl"
+        boxShadow="lg"
+      >
         <Heading pb={2}>Make Reservation</Heading>
 
         <TableContainer
-          bgColor={"#2e3440"}
+          bgColor="gray.500"
           rounded="2xl"
-          maxH="500px"
+          maxH="70vh"
           overflowY="auto"
+          minW="70vw"
         >
           <Table
             variant="simple"
@@ -229,7 +240,7 @@ export default function MakeReserve() {
             borderColor="gray.200"
             color="white"
           >
-            <Thead>
+            <Thead bgColor="gray">
               <Tr>
                 <Th borderWidth="1px" borderColor="gray.200" color="white">
                   Image
@@ -237,7 +248,12 @@ export default function MakeReserve() {
                 <Th borderWidth="1px" borderColor="gray.200" color="white">
                   Item
                 </Th>
-                <Th borderWidth="1px" borderColor="gray.200" color="white">
+                <Th
+                  borderWidth="1px"
+                  borderColor="gray.200"
+                  color="white"
+                  textAlign="center"
+                >
                   Stocks Left
                 </Th>
                 <Th
@@ -271,8 +287,12 @@ export default function MakeReserve() {
                     </ul>
                   </Td>
                   <Td textAlign="center">{response.quantity} pcs</Td>
-                  <Td borderWidth="1px" borderColor="gray.200">
-                    <Stack direction="row">
+                  <Td
+                    borderWidth="1px"
+                    borderColor="gray.200"
+                    textAlign="center"
+                  >
+                    <Stack direction="row" justify="center">
                       <Button
                         onClick={() => {
                           handleDecrease(response);

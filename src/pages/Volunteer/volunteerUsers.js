@@ -49,16 +49,26 @@ export default function VolunteerUsers() {
         <NavBar />
       </Box>
 
-      <Flex direction="column" align="center" justify="start" minHeight="100vh">
+      <Flex
+        direction="column"
+        align="center"
+        justify="start"
+        minHeight="100vh"
+        bgGradient="linear(to-r, orange.400, yellow.300)"
+        color="white"
+        textAlign="center"
+        borderRadius="xl"
+        boxShadow="lg"
+      >
         <Heading pb={2}>Available Sessions</Heading>
-        <TableContainer bgColor={"#2e3440"} rounded="2xl">
+        <TableContainer bgColor="gray.500" rounded="xl">
           <Table
             variant="simple"
             borderWidth="1px"
             borderColor="gray.200"
             color="white"
           >
-            <Thead>
+            <Thead bgColor="gray">
               <Tr>
                 <Th borderWidth="1px" borderColor="gray.200" color="white">
                   Description

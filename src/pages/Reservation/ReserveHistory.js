@@ -33,12 +33,14 @@ import NavBar from "../utility/Navbar";
 
 export default function ReserveHistory() {
   const student_id = localStorage.getItem("username");
+
   const [resHistory, setResHistory] = useState([]);
   useEffect(() => {
     axios
       .get(`http://localhost:3000/reserve/reserveHistory/${student_id}`)
       .then(function (response) {
         setResHistory(response.data);
+        console.log(student_id);
       })
       .catch(function (error) {
         console.log(error);
@@ -51,12 +53,22 @@ export default function ReserveHistory() {
         <NavBar />
       </Box>
 
-      <Center>
-        <Heading mb={2}>Reservation History</Heading>
-      </Center>
-      <Flex direction="column" align="center" justify="start" minHeight="100vh">
+      <Flex
+        direction="column"
+        align="center"
+        justify="start"
+        minHeight="100vh"
+        bgGradient="linear(to-r, orange.400, yellow.300)"
+        color="white"
+        textAlign="center"
+        borderRadius="xl"
+        boxShadow="lg"
+      >
+        <Center>
+          <Heading mb={2}>Reservation History</Heading>
+        </Center>
         <TableContainer w="1000px">
-          <Table variant="striped">
+          <Table variant="simple">
             <Thead borderWidth={1}>
               <Tr>
                 <Th>No.</Th>

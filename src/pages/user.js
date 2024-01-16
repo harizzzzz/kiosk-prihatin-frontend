@@ -146,11 +146,22 @@ function User() {
         <NavBar />
       </Box>
 
-      <Center>
-        <Heading mb={2}>User Details</Heading>
-      </Center>
-      <Flex direction="column" align="center" justify="start" minHeight="100vh">
-        <TableContainer w="1000px">
+      <Flex
+        direction="column"
+        align="center"
+        justify="start"
+        minHeight="100vh"
+        bgGradient="linear(to-r, orange.400, yellow.300)"
+        color="white"
+        textAlign="center"
+        borderRadius="xl"
+        boxShadow="lg"
+      >
+        {" "}
+        <Center>
+          <Heading mb={2}>User Details</Heading>
+        </Center>
+        <TableContainer w="1000px" bgColor="gray">
           <Table variant="simple">
             <Tbody borderWidth={1}>
               <Tr>

@@ -92,6 +92,9 @@ export default function NavBarAdmin() {
                 </MenuList>
               </Menu>
             </Box>
+            <Box as={ReactRouterLink} to={"/admin/manageUser"}>
+              Users
+            </Box>
             <Box as={ReactRouterLink} to={"/do"}>
               Donation
             </Box>

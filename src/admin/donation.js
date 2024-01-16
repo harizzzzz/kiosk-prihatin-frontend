@@ -54,7 +54,15 @@ const DonationManagement = () => {
         {" "}
         <NavBarAdmin />
       </Box>
-      <Box p="6">
+      <Box
+        p="6"
+        bgGradient="linear(to-r, orange.400, yellow.300)"
+        color="white"
+        textAlign="center"
+        borderRadius="xl"
+        boxShadow="lg"
+        minH="100vh"
+      >
         <Heading as="h1" size="lg" mb="6">
           Donation Management
         </Heading>
